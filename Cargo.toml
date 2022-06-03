@@ -1,0 +1,9 @@
+[package]
+name = "bfbb-cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ctrlc = "3.2.2"
+clap = { version = "3.1.18", features = ["derive","unstable-multicall"] }
+shlex = "1.1.0"
