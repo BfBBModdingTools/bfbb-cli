@@ -12,7 +12,6 @@ fn main() {
     let mut rl = Editor::<()>::new();
     rl.bind_sequence(rustyline::KeyEvent::ctrl('c'), CtrlCHandler);
     loop {
-        // let readline = rl.readline(">> ");
         match rl.readline(">> ") {
             Ok(line) => {
                 rl.add_history_entry(&line);
