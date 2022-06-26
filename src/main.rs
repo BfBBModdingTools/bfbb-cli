@@ -16,7 +16,7 @@ fn main() {
         match rl.readline(">> ") {
             Ok(line) => {
                 rl.add_history_entry(&line);
-                let args = Cli::try_parse_from(shlex::split(&line).unwrap_or(Vec::new()));
+                let args = Cli::try_parse_from(shlex::split(&line).unwrap_or_default());
                 if let Err(e) = args {
                     println!("{e}");
                     continue;
