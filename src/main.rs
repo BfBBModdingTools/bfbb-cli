@@ -25,7 +25,7 @@ fn main() {
 
                 match args.command {
                     Commands::Spatula(sub) => match sub {
-                        SpatulaCommands::List { room } => match room {
+                        SpatulaCommands::List { level } => match level {
                             Some(val) => println!("Listing {val}"),
                             None => println!("Listing All"),
                         },

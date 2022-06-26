@@ -5,7 +5,7 @@ const PARSER_TEMPLATE: &str = "{all-args}";
 // strip out name/version
 const COMMAND_TEMPLATE: &str = "\
      {about-with-newline}\n\
-     {usage-heading}\n    {usage}\n\
+     {usage-heading}\t{usage}\n\
      \n\
      {all-args}{after-help}\
     ";
@@ -26,18 +26,21 @@ pub struct Cli {
 #[derive(Debug, Subcommand)]
 pub enum Commands {
     #[clap(subcommand, help_template = COMMAND_TEMPLATE)]
+    /// Perform actions based on spatulas
     Spatula(SpatulaCommands),
     #[clap(arg_required_else_help = true, help_template = COMMAND_TEMPLATE)]
+    /// Perform actions based on entities
     Entity { arg: String },
 }
 
 #[derive(Debug, Subcommand)]
 pub enum SpatulaCommands {
+    /// List spatulas names from a given Level. If no Level is given, list spatulas names in the current level
     List {
-        room: Option<String>,
+        /// List spatulas from this Level only
+        level: Option<String>,
     },
     #[clap(arg_required_else_help = true, help_template=COMMAND_TEMPLATE)]
-    Collect {
-        spatula: String,
-    },
+    /// Collect a spatula
+    Collect { spatula: String },
 }
