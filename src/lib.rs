@@ -25,12 +25,29 @@ pub struct Cli {
 
 #[derive(Debug, Subcommand)]
 pub enum Commands {
-    #[clap(subcommand, help_template = COMMAND_TEMPLATE)]
-    /// Perform actions based on spatulas
-    Spatula(SpatulaCommands),
     #[clap(arg_required_else_help = true, help_template = COMMAND_TEMPLATE)]
     /// Perform actions based on entities
     Entity { arg: String },
+    /// Toggle Hans on or off
+    Hans,
+    /// Actions and information related to the game interface
+    Interface,
+    #[clap(subcommand, help_template = COMMAND_TEMPLATE)]
+    /// Actions on the player
+    Player(PlayerCommands),
+    #[clap(subcommand, help_template = COMMAND_TEMPLATE)]
+    /// Perform actions based on spatulas
+    Spatula(SpatulaCommands),
+}
+
+#[derive(Debug, Subcommand)]
+pub enum PlayerCommands {
+    /// Switch to alternative character.
+    Switch,
+    /// Toggle the bubble bowl
+    BubbleBowl,
+    /// Toggle the cruise bubble
+    CruiseBubble,
 }
 
 #[derive(Debug, Subcommand)]
